@@ -61,7 +61,7 @@ describe('SubscribeButton component', () => {
         user: { name: 'John Doe', email: 'john.doe@example.com' },
         activeSubscription: 'fake-active-subscription',
         expires: 'fake-expires'
-      }
+      } as any
       , false])
 
     render(<SubscribeButton />)
