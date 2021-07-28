@@ -3,9 +3,14 @@ import { api } from '../../services/api';
 import { useRouter } from 'next/router';
 import { getStripeJs } from '../../services/stripe-js';
 import styles from './styles.module.scss';
+import { Session } from 'next-auth';
+
+interface ISession extends Session {
+  activeSubscription: boolean;
+}
 
 export function SubscribeButton() {
-  const [session] = useSession() as any;
+  const [session] = useSession() as [ISession | null | undefined, boolean];
   const { push } = useRouter();
 
   async function handleSubscribe() {
